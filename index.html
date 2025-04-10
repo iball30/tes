@@ -1,157 +1,284 @@
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web - Iball</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
-            50% { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; }
-            100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: url('https://files.catbox.moe/lglj14.png') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-        }
-        .container {
-            position: relative;
-            width: 90%;
-            max-width: 600px;
-            padding: 20px;
-            background: rgba(30, 0, 0, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 0 15px #ff0000;
-            animation: glow 1.5s infinite alternate;
-            transition: transform 0.3s ease-in-out;
-        }
-        .profile-img:hover {
-            transform: scale(1.1);
-        }
-        .btn-container {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 10px;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: 600;
-            color: white;
-            background: linear-gradient(135deg, #8b0000, #ff0000);
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: 0.3s;
-            box-shadow: 0 0 10px #8b0000;
-        }
-        .btn:hover {
-            background: linear-gradient(135deg, #660000, #cc0000);
-            box-shadow: 0 0 20px #ff0000;
-            transform: scale(1.05);
-        }
-        .qris-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        .qris-modal img {
-            max-width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px #ff0000;
-            transition: transform 0.3s ease-in-out;
-        }
-        .qris-modal img:hover {
-            transform: scale(1.1);
-        }
-        .qris-modal .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
-        }
-        audio {
-            margin-top: 15px;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ibal Dev | Portfolio</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968672.png" type="image/png">
+  <meta name="description" content="Portfolio resmi Ibal Dev, seorang frontend developer dengan spesialisasi desain interaktif.">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    html, body {
+      scroll-behavior: smooth;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      font-family: 'Poppins', sans-serif;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #0a0a0a;
+      padding: 1rem;
+      text-align: center;
+      z-index: 999;
+      box-shadow: 0 2px 10px #0ff2;
+    }
+    nav a {
+      margin: 0 1rem;
+      color: #0ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .preloader h1 {
+      font-size: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      color: #0ff;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0.3; }
+    }
+    header {
+      text-align: center;
+      padding: 6rem 1rem 2rem;
+    }
+    .typewriter-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #0ff, #0ff, #08f, #0ff);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientText 6s linear infinite;
+    }
+    @keyframes gradientText {
+      0% { background-position: 0% }
+      100% { background-position: 200% }
+    }
+    .subtitle {
+      color: #aaa;
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .pp {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin: 2rem auto;
+      overflow: hidden;
+      box-shadow: 0 0 30px cyan, 0 0 100px cyan;
+    }
+    .pp img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .spotify {
+      display: flex;
+      justify-content: center;
+      margin: 2rem auto;
+    }
+    .spotify iframe {
+      width: 300px;
+      height: 80px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #00ffff40;
+    }
+    .section {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #111;
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid #0ff2;
+      box-shadow: 0 0 20px #00ffff10, 0 0 40px #00ffff08;
+      transition: 0.3s;
+    }
+    .section:hover {
+      box-shadow: 0 0 30px #00ffff30, 0 0 60px #00ffff20;
+    }
+    .section h2 {
+      color: #0ff;
+      margin-bottom: 1rem;
+    }
+    .skill {
+      margin-bottom: 1rem;
+    }
+    .skill p {
+      margin-bottom: 0.2rem;
+    }
+    .bar {
+      background: #222;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .fill {
+      height: 10px;
+      background: #0ff;
+      width: 0;
+      animation: fillbar 2s forwards;
+    }
+    @keyframes fillbar {
+      100% { width: 100%; }
+    }
+    .quote-box {
+      text-align: center;
+      font-style: italic;
+      color: #aaa;
+      margin-top: 2rem;
+    }
+    .socials {
+      text-align: center;
+      margin-top: 3rem;
+    }
+    .socials a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.3s, filter 0.3s;
+    }
+    .socials img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    .socials a:hover {
+      transform: scale(1.3);
+      filter: drop-shadow(0 0 8px cyan);
+    }
+    footer {
+      text-align: center;
+      margin: 4rem 0 2rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    .ngl-float, .wa-float {
+      position: fixed;
+      bottom: 20px;
+      background: #0ff;
+      color: #000;
+      padding: 12px 16px;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 0 15px #0ff80;
+      z-index: 999;
+      font-weight: bold;
+    }
+    .ngl-float {
+      right: 20px;
+    }
+    .wa-float {
+      left: 20px;
+      background: #25D366;
+      color: white;
+      box-shadow: 0 0 15px #25D36688;
+    }
+  
+    .fill-html {
+      animation: fill-html 2s forwards;
+    }
+    @keyframes fill-html {
+      0% { width: 0; }
+      100% { width: 85%; }
+    }
+
+    .fill-css {
+      animation: fill-css 2s forwards;
+    }
+    @keyframes fill-css {
+      0% { width: 0; }
+      100% { width: 50%; }
+    }
+
+    .fill-js {
+      animation: fill-js 2s forwards;
+    }
+    @keyframes fill-js {
+      0% { width: 0; }
+      100% { width: 30%; }
+    }
+</style>
 </head>
 <body>
-    <div class="overlay"></div>
-    <div class="container">
-        <img src="https://files.catbox.moe/x6dbhm.png" alt="Profile" class="profile-img">
-        <h1 class="name">Hello, I'm Iball</h1>
-        <h2 class="about-title">ABOUT ME</h2>
-        <p class="about">Ola, let me introduce myself. I'm someone who tends to be lazy but loves exploring things that catch my interest. If you need any help, feel free to contact me!</p>
-        <div class="btn-container">
-            <a href="https://t.me/Iballxz" class="btn" target="_blank">Telegram</a>
-            <a href="https://wa.me/62857686492681" class="btn" target="_blank">WhatsApp</a>
-<a href="https://www.instagram.com/mhmdiqball14_" class="btn" target="_blank">Instagram</a>
-        </div>
-        <audio controls>
-            <source src="https://files.catbox.moe/7iqko8.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+  <div class="preloader">
+    <h1>Loading...</h1>
+  </div>  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#connect">Social</a>
+  </nav>  <header>
+    <h1 class="typewriter-text">Fortopolio</h1>
+    <p class="subtitle">Bay Guehh😂</p>
+    <div class="pp">
+      <img src="https://files.catbox.moe/x6dbhm.png" alt="Foto Profil">
     </div>
-
-    <div class="qris-modal" id="qrisModal">
-        <span class="close" onclick="closeQRIS()">&times;</span>
-        <img src="https://img5.pixhost.to/images/3087/569859976_skyzopedia.jpg" alt="QRIS Payment">
+  </header>  <div class="spotify" data-aos="fade-up">
+  <iframe style="border-radius:12px" 
+    src="https://open.spotify.com/embed/track/673UlAKmYthrzK4KbjBW8y?utm_source=generator&theme=0" 
+    width="300" height="80" frameborder="0" 
+    allowtransparency="true" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy">
+  </iframe>
+</div> <section class="section" id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>Programmer kreatif dengan fokus pada desain UI interaktif dan teknologi web modern. Suka bereksperimen dengan efek visual dan animasi yang menarik.</p>
+  </section>  <section class="section" id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="skill">
+      <p>HTML</p>
+      <div class="bar"><div class="fill fill-html"></div></div>
     </div>
+    <div class="skill">
+      <p>CSS</p>
+      <div class="bar"><div class="fill fill-css"></div></div>
+    </div>
+    <div class="skill">
+      <p>JavaScript</p>
+      <div class="bar"><div class="fill fill-js"></div></div>
+    </div>
+  </section>  <section class="section" id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>Vakum Sementara</h3>
+      <p></p>
+    </div>
+  </section>  <section class="section socials" id="connect" data-aos="fade-up">
+    <h2>Social Media</h2>
+    <a href="https://instagram.com/mhmdiqbal14_" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+    <a href="https://t.me/Iballxz" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram"></a>
+    <a href="https://www.tiktok.com/@iballxmods" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046125.png" alt="TikTok"></a>
+  </section>  <section class="section quote-box" data-aos="fade-up">
+    <p>“Coding adalah seni, dan setiap baris adalah goresan imajinasi.”</p>
+  </section>  <footer data-aos="fade-up">
+    Designed and built with love by Iball — powered by potato phones & caffeine.<br>
+    © 2025 Ibal Dev. All Rights Reserved.
+  </footer><a href="https://ngl.link/iball12" class="ngl-float" target="_blank">NGL Chat</a> <a href="https://wa.me/62857686492681" class="wa-float" target="_blank">WhatsApp</a>
 
-    <script>
-        function openQRIS() {
-            document.getElementById('qrisModal').style.display = 'flex';
-        }
-        function closeQRIS() {
-            document.getElementById('qrisModal').style.display = 'none';
-        }
-    </script>
-</body>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  <script>
+    AOS.init({ duration: 1000, once: true });
+    window.addEventListener('load', () => {
+      document.querySelector('.preloader').style.display = 'none';
+    });
+  </script></body>
 </html>
